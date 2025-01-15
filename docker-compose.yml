@@ -1,13 +1,15 @@
 version: '3.8'
 
 services:
-  eduall:
+  php_eduall:
     build:
       context: ./eduall
       dockerfile: Dockerfile
-    container_name: eduall
+    container_name: php_eduall
     networks:
       - app-network
+    ports:
+      - "9001:900"
     expose:
       - "8181"
 
@@ -32,7 +34,7 @@ services:
     networks:
       - app-network
     depends_on:
-      - eduall
+      - php_eduall
       - registration
 
 networks:
