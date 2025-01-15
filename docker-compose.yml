@@ -13,17 +13,6 @@ services:
     expose:
       - "8181"
 
-  registration:
-    build:
-      context: ./registration
-    container_name: registration
-    volumes:
-      - ./registration/src:/registration
-    networks:
-      - app-network
-    expose:
-      - "8182"
-
   nginx:
     image: nginx:latest
     container_name: nginx
@@ -31,11 +20,11 @@ services:
       - "80:80"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./registration/src:/registration
     networks:
       - app-network
     depends_on:
       - php_eduall
-      - registration
 
 networks:
   app-network:
