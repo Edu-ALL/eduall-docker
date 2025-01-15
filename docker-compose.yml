@@ -19,8 +19,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./nginx/eduall.conf:/etc/nginx/conf.d/eduall.conf
-      - ./nginx/registration.conf:/etc/nginx/conf.d/registration.conf
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
       - /etc/letsencrypt/live/all-inedu.com/fullchain.pem:/etc/letsencrypt/live/all-inedu.com/fullchain.pem
       - /etc/letsencrypt/live/all-inedu.com/privkey.pem:/etc/letsencrypt/live/all-inedu.com/privkey.pem
       - ./eduall/src:/eduall
