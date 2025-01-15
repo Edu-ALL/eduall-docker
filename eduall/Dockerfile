@@ -20,7 +20,7 @@ RUN apk add --no-cache \
 
 WORKDIR /eduall
 
-COPY ./eduall/src /eduall/
+COPY ./src /eduall/
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
