@@ -24,6 +24,8 @@ COPY ./src /eduall/
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+RUN chmod -R 777 storage/
+
 EXPOSE 9000
 
 CMD ["sh", "-c", "php-fpm"]
