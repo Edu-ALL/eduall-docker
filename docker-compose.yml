@@ -9,7 +9,7 @@ services:
     networks:
       - app-network
     ports:
-      - "9001:900"
+      - "9001:9000"
     expose:
       - "8181"
 
