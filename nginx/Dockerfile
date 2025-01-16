@@ -1,6 +1,10 @@
 FROM nginx:alpine
 
-RUN apk update && apk add --no-cache cron bash
+RUN apk update && \
+    apk add --no-cache \
+    bash \
+    cron \
+    && rm -rf /var/cache/apk/*
 
 # CRON 
 COPY ./cron/eduall_cron /etc/cron.d/eduall_cron
