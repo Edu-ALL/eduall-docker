@@ -1,1 +1,1 @@
-* * * * * root echo "Cron job is running at $(date)" >> /var/log/cron.log 2>&1
+echo "* * * * * root echo 'Cron job executed' >> /tmp/cron_test.log" >> /etc/crontab
