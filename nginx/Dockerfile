@@ -7,9 +7,9 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # CRON 
-COPY ./cron/eduall_cron /etc/eduall_cron
+COPY ./cron/crontab /etc/crontab
 
-RUN chmod 0644 /etc/eduall_cron
+RUN chmod 0644 /etc/crontab
 
 CMD ["sh", "-c", "cron && nginx -g 'daemon off;'"]
 
