@@ -1,0 +1,2 @@
+# This cron job echoes a message every minute to a log file
+* * * * * /usr/bin/php /eduall/artisan schedule:run >> /var/log/cronjob.log 2>> /var/log/cron_error.log

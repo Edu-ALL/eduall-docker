@@ -21,12 +21,15 @@ RUN apk add --no-cache \
 WORKDIR /eduall
 
 COPY ./src /eduall/
-
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
 RUN chmod -R 777 storage/
-
 RUN composer install
+
+# CRON 
+COPY ./cron/cronfile /etc/cron.d/cronfile
+RUN echo "" >> /etc/cron.d/cronfile
+RUN chmod 0644 /etc/cron.d/cronfile
+RUN crontab /etc/cron.d/cronfile
 
 EXPOSE 9000
 
