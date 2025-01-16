@@ -13,7 +13,6 @@ RUN apt-get update && apt-get install -y \
     nodejs \
     npm \
     cron \
-    procps \
     && docker-php-ext-configure gd \
     --with-freetype \
     --with-jpeg \
