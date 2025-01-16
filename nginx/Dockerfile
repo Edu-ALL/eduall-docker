@@ -1,13 +1,10 @@
-FROM nginx:alpine
+FROM nginx:stable
 
-RUN apk update && apk add --no-cache \
+RUN apt-get update && apt-get install -y \
+    cron \
     curl \
     bash \
-    && rm -rf /var/cache/apk/*
-
-RUN curl -O http://dl-cdn.alpinelinux.org/alpine/edge/main/x86_64/cron-3.0.1-r0.apk && \
-    apk add --allow-untrusted cron-3.0.1-r0.apk && \
-    rm cron-3.0.1-r0.apk
+    && rm -rf /var/lib/apt/lists/*
 
 # CRON 
 COPY ./cron/eduall_cron /etc/eduall_cron
