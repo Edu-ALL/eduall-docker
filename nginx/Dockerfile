@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # CRON 
-COPY ./nginx/cron/cronfile /etc/cron.d/cronfile
+COPY ./cron/cronfile /etc/cron.d/cronfile
 RUN chmod 0644 /etc/cron.d/crontab
 RUN crontab /etc/cron.d/cronfile
 
