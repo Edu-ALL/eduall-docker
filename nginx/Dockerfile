@@ -11,6 +11,6 @@ COPY ./cron/eduall_cron /etc/eduall_cron
 
 RUN chmod 0644 /etc/eduall_cron
 
-CMD ["sh", "-c", "crond && nginx -g 'daemon off;'"]
+CMD ["sh", "-c", "cron && nginx -g 'daemon off;'"]
 
 EXPOSE 80
