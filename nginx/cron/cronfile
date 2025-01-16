@@ -1,1 +1,1 @@
-* * * * * bash echo 'Cron job executed at $(date)' >> /var/log/cron.log
+* * * * * bash echo 'Cron job executed at $(date)' >> /var/log/cron.log 2>&1
