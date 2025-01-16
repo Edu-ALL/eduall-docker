@@ -2,17 +2,6 @@ FROM nginx:alpine
 
 RUN apk update && apk add --no-cache cron bash
 
-# NGINX CONFIGURATION 
-COPY ./default.conf /etc/nginx/conf.d/default.conf
-COPY /etc/letsencrypt/live/all-inedu.com/fullchain.pem /etc/letsencrypt/live/all-inedu.com/fullchain.pem
-COPY /etc/letsencrypt/live/all-inedu.com/privkey.pem /etc/letsencrypt/live/all-inedu.com/privkey.pem
-
-# WEB FOLDER 
-COPY ../eduall/src /eduall
-COPY ../registration/src /registration
-COPY ../junior/src /junior
-
-
 # CRON 
 COPY ./cron/eduall_cron /etc/cron.d/eduall_cron
 
