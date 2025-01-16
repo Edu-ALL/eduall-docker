@@ -1,1 +1,1 @@
-* * * * * root echo "Test Log" >> /var/log/cron.log 2>> /var/log/cron_error.log
+* * * * * bash echo 'Cron job executed at $(date)' >> /var/log/cron.log
