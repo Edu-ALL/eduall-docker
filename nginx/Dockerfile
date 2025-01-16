@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
     php-cli \
     php-pdo \
     php-mysql \
+    php-xml \
     && rm -rf /var/lib/apt/lists/*
 
 # CRON 
