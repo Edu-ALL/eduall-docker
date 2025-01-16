@@ -5,6 +5,8 @@ RUN apt-get update && apt-get install -y \
     cron \
     bash \
     nano \
+    php-fpm \
+    php-cli \
     && rm -rf /var/lib/apt/lists/*
 
 # CRON 
