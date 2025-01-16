@@ -1,1 +1,1 @@
-* * * * * root /app/myscript.sh >> /var/log/cron.log 2>&1
+* * * * * root echo "Test Log" >> /var/log/cron.log 2>&1
