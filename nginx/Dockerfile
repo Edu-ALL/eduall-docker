@@ -8,8 +8,10 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # CRON 
-RUN chmod 0644 /etc/crontab
+COPY ./nginx/cron/cronfile /etc/cron.d/cronfile
+RUN chmod 0644 /etc/cron.d/crontab
+RUN crontab /etc/cron.d/cronfile
 
-CMD ["sh", "-c", "cron && nginx -g 'daemon off;'"]
+CMD ["cron && nginx -g 'daemon off;'" "-f"]
 
 EXPOSE 80

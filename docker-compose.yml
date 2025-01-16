@@ -35,7 +35,6 @@ services:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
       - /etc/letsencrypt/live/all-inedu.com/fullchain.pem:/etc/letsencrypt/live/all-inedu.com/fullchain.pem
       - /etc/letsencrypt/live/all-inedu.com/privkey.pem:/etc/letsencrypt/live/all-inedu.com/privkey.pem
-      - ./nginx/cron/crontab:/etc/crontab
       - ./eduall/src:/eduall
       - ./registration/src:/registration
       - ./junior/src:/junior
