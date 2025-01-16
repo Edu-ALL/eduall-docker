@@ -7,6 +7,8 @@ RUN apt-get update && apt-get install -y \
     nano \
     php-fpm \
     php-cli \
+    php-pdo \
+    php-mysql \
     && rm -rf /var/lib/apt/lists/*
 
 # CRON 
