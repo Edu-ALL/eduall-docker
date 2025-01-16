@@ -12,6 +12,10 @@ COPY ./cron/cronfile /etc/cron.d/cronfile
 RUN chmod 0644 /etc/cron.d/cronfile
 RUN crontab /etc/cron.d/cronfile
 
-CMD ["cron && nginx -g 'daemon off;'" "-f"]
+
+RUN service cron reload
+
+CMD cron && nginx -g 'daemon off;'
+# CMD ["cron && nginx -g 'daemon off;'" "-f"]
 
 EXPOSE 80
