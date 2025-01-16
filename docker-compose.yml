@@ -13,6 +13,16 @@ services:
     expose:
       - "8181"
 
+  php_junior:
+    build:
+      context: ./junior
+      dockerfile: Dockerfile
+    container_name: php_junior
+    networks:
+      - app-network
+    ports:
+      - "9002:9000"
+
   nginx:
     image: nginx:alpine
     container_name: nginx
@@ -25,10 +35,12 @@ services:
       - /etc/letsencrypt/live/all-inedu.com/privkey.pem:/etc/letsencrypt/live/all-inedu.com/privkey.pem
       - ./eduall/src:/eduall
       - ./registration/src:/registration
+      - ./junior/src:/junior
     networks:
       - app-network
     depends_on:
       - php_eduall
+      - php_junior
 
 networks:
   app-network:
