@@ -11,8 +11,6 @@ COPY ./cron/eduall_cron /etc/eduall_cron
 
 RUN chmod 0644 /etc/eduall_cron
 
-RUN crontab /etc/eduall_cron
-
 CMD ["sh", "-c", "crond && nginx -g 'daemon off;'"]
 
 EXPOSE 80
