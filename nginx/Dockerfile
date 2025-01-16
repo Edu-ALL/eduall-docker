@@ -5,12 +5,19 @@ RUN apt-get update && apt-get install -y \
     cron \
     bash \
     nano \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install PHP and required extensions
+RUN apt-get update && apt-get install -y \
     php-fpm \
     php-cli \
     php-mbstring \
     php-xml \
     php-curl \
-    && rm -rf /var/lib/apt/lists/*
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    && docker-php-ext-install pdo pdo_mysql bcmath gd
 
 # CRON 
 COPY ./cron/cronfile /etc/cron.d/cronfile
