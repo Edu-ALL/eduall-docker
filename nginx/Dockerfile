@@ -10,11 +10,7 @@ RUN apt-get update && apt-get install -y \
 # Install PHP and required extensions
 RUN apt-get update && apt-get install -y \
     php-fpm \
-    php-cli \
-    php-mbstring \
-    php-xml \
-    php-curl \
-    && docker-php-ext-install pdo pdo_mysql bcmath gd
+    php-cli 
 
 # CRON 
 COPY ./cron/cronfile /etc/cron.d/cronfile
