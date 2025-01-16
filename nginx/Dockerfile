@@ -11,8 +11,6 @@ COPY ./cron/crontab /etc/crontab
 
 RUN chmod 0644 /etc/crontab
 
-RUN crontab /etc/crontab
-
 CMD ["sh", "-c", "cron && nginx -g 'daemon off;'"]
 
 EXPOSE 80
