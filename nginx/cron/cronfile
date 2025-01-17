@@ -1,4 +1,4 @@
 * * * * * echo 'Cron is running ...'
 * * * * * /usr/bin/php /eduall/artisan schedule:run >> /var/log/cronjob.log 2>> /var/log/cron_error.log
-* * * * * /usr/bin/php /crm/editing schedule:run >> /var/log/cronjob.log 2>> /var/log/cron_error.log
+* * * * * /usr/bin/php /editing/artisan schedule:run >> /var/log/cronjob.log 2>> /var/log/cron_error.log
 * * * * * /crm/queue.sh >> /var/log/cronjob.log 2>> /var/log/cron_error.log
