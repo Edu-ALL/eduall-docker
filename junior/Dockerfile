@@ -24,7 +24,6 @@ COPY ./src /junior/
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer install
-RUN www-data:www-data storage/
 RUN chmod -R 777 storage/
 
 EXPOSE 9000
