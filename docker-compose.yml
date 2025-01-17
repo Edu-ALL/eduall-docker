@@ -73,13 +73,13 @@ services:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
       - /etc/letsencrypt/live/all-inedu.com/fullchain.pem:/etc/letsencrypt/live/all-inedu.com/fullchain.pem
       - /etc/letsencrypt/live/all-inedu.com/privkey.pem:/etc/letsencrypt/live/all-inedu.com/privkey.pem
-      - php_eduall:/eduall
+      - ./eduall/src:/eduall
       - ./registration/src:/registration
-      - php_junior:/junior
-      - php_timesheet:/timesheet
-      - php_assessment:/assessment
-      - php_editing:/editing
-      - php_crm:/crm
+      - ./junior/src:/junior
+      - ./timesheet/src:/timesheet
+      - ./assessment/src:/assessment
+      - ./editing/src:/editing
+      - ./crm/src:/crm
     networks:
       - app-network
     depends_on:
@@ -93,11 +93,3 @@ services:
 networks:
   app-network:
     driver: bridge
-
-volumes:
-  php_eduall:
-  php_junior:
-  php_timesheet:
-  php_assessment:
-  php_editing:
-  php_crm:
