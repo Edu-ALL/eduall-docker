@@ -10,8 +10,6 @@ services:
       - app-network
     ports:
       - "9001:9000"
-    expose:
-      - "8181"
 
   php_junior:
     build:
