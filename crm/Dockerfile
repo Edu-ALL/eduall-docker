@@ -16,14 +16,14 @@ RUN apk add --no-cache \
     --with-freetype \
     --with-jpeg \
     --with-webp \
-    && docker-php-ext-install pdo pdo_mysql bcmath gd
+    && docker-php-ext-install pdo pdo_mysql bcmath gd zip
 
 WORKDIR /crm
 
 COPY ./src /crm/
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN chmod -R 777 storage/
-RUN composer update
+RUN composer install
 
 EXPOSE 9000
 
