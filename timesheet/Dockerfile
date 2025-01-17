@@ -16,7 +16,7 @@ RUN apk add --no-cache \
     --with-freetype \
     --with-jpeg \
     --with-webp \
-    && docker-php-ext-install pdo pdo_mysql bcmath gd
+    && docker-php-ext-install pdo pdo_mysql bcmath gd zip
 
 WORKDIR /timesheet
 
