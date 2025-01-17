@@ -93,3 +93,11 @@ services:
 networks:
   app-network:
     driver: bridge
+
+volumes:
+  php_eduall:
+  php_junior:
+  php_timesheet:
+  php_assessment:
+  php_editing:
+  php_crm:
