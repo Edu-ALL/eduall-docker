@@ -7,6 +7,7 @@ RUN apk add --no-cache \
     libjpeg-turbo-dev \
     libwebp-dev \
     freetype-dev \
+    libzip-dev \
     zip \
     unzip \
     nano \
