@@ -6,6 +6,8 @@ services:
       context: ./eduall
       dockerfile: Dockerfile
     container_name: php_eduall
+    volumes:
+      - ./eduall/src:/eduall
     networks:
       - app-network
     ports:
@@ -16,6 +18,8 @@ services:
       context: ./junior
       dockerfile: Dockerfile
     container_name: php_junior
+    volumes:
+      - ./junior/src:/junior
     networks:
       - app-network
     ports:
@@ -26,6 +30,8 @@ services:
       context: ./timesheet
       dockerfile: Dockerfile
     container_name: php_timesheet
+    volumes:
+      - ./timesheet/src:/timesheet
     networks:
       - app-network
     ports:
@@ -36,6 +42,8 @@ services:
       context: ./assessment
       dockerfile: Dockerfile
     container_name: php_assessment
+    volumes:
+      - ./assessment/src:/assessment
     networks:
       - app-network
     ports:
@@ -46,6 +54,8 @@ services:
       context: ./editing
       dockerfile: Dockerfile
     container_name: php_editing
+    volumes:
+      - ./editing/src:/editing
     networks:
       - app-network
     ports:
@@ -56,6 +66,8 @@ services:
       context: ./crm
       dockerfile: Dockerfile
     container_name: php_crm
+    volumes:
+      - ./crm/src:/crm
     networks:
       - app-network
     ports:
