@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y \
     php-pdo \
     php-mysql \
     php-xml \
+    php-bcmath \
     && rm -rf /var/lib/apt/lists/*
 
 # CRON 
