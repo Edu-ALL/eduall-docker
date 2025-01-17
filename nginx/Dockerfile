@@ -18,7 +18,7 @@ RUN echo "" >> /etc/cron.d/cronfile
 RUN chmod 0644 /etc/cron.d/cronfile
 RUN crontab /etc/cron.d/cronfile
 
-RUN service cron start
+RUN service cron reload
 
 CMD cron && nginx -g 'daemon off;'
 # CMD ["cron && nginx -g 'daemon off;'" "-f"]
