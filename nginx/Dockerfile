@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
     bash \
     nano \
     nodejs \
+    npm \
     php-fpm \
     php-cli \
     php-pdo \
