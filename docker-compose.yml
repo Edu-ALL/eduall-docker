@@ -8,6 +8,7 @@ services:
     container_name: php_eduall
     volumes:
       - ./eduall/src:/eduall
+      - ./eduall/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini
     networks:
       - app-network
     ports:
@@ -20,6 +21,7 @@ services:
     container_name: php_junior
     volumes:
       - ./junior/src:/junior
+      - ./junior/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini
     networks:
       - app-network
     ports:
@@ -32,6 +34,7 @@ services:
     container_name: php_timesheet
     volumes:
       - ./timesheet/src:/timesheet
+      - ./timesheet/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini
     networks:
       - app-network
     ports:
@@ -44,6 +47,7 @@ services:
     container_name: php_assessment
     volumes:
       - ./assessment/src:/assessment
+      - ./assessment/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini
     networks:
       - app-network
     ports:
@@ -56,6 +60,7 @@ services:
     container_name: php_editing
     volumes:
       - ./editing/src:/editing
+      - ./editing/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini
     networks:
       - app-network
     ports:
@@ -68,6 +73,7 @@ services:
     container_name: php_crm
     volumes:
       - ./crm/src:/crm
+      - ./crm/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini
     networks:
       - app-network
     ports:
