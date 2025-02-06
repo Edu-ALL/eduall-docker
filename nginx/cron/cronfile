@@ -2,3 +2,4 @@
 * * * * * /usr/bin/php /eduall/artisan schedule:run >> /var/log/cronjob.log 2>> /var/log/cron_error.log
 * * * * * /usr/bin/php /editing/artisan schedule:run >> /var/log/cronjob.log 2>> /var/log/cron_error.log
 * * * * * /crm/queue.sh >> /var/log/cronjob.log 2>> /var/log/cron_error.log
+* * * * * /crm-staging/queue.sh >> /var/log/cronjob.log 2>> /var/log/cron_error.log
