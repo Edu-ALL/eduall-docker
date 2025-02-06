@@ -79,11 +79,11 @@ services:
     ports:
       - "9106:9000"
 
-  nginx:
+  staging_nginx:
     build: 
       context: ./nginx
       dockerfile: Dockerfile
-    container_name: nginx
+    container_name: staging_nginx
     ports:
       - "80:80"
       - "443:443"
