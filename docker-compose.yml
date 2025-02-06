@@ -79,6 +79,19 @@ services:
     ports:
       - "9006:9000"
 
+  staging_php_crm:
+    build:
+      context: ./crm
+      dockerfile: Dockerfile
+    container_name: staging_php_crm
+    volumes:
+      - ./crm/src:/staging-crm
+      - ./crm/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini
+    networks:
+      - app-network
+    ports:
+      - "9007:9000"
+
   nginx:
     build: 
       context: ./nginx
@@ -98,6 +111,7 @@ services:
       - ./assessment/src:/assessment
       - ./editing/src:/editing
       - ./crm/src:/crm
+      - ./crm/src:/crm-staging
     networks:
       - app-network
     depends_on:
@@ -107,6 +121,7 @@ services:
       - php_assessment
       - php_editing
       - php_crm
+      - staging_php_crm
 
 networks:
   app-network:
