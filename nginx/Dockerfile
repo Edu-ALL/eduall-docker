@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
     php-mysql \
     php-xml \
     php-bcmath \
+    php-gd\
     && rm -rf /var/lib/apt/lists/*
 
 # CRON 
