@@ -1,83 +1,83 @@
 version: '3.8'
 
 services:
-  php_eduall:
-    build:
-      context: ./eduall
-      dockerfile: Dockerfile
-    container_name: php_eduall
-    volumes:
-      - ./eduall/src:/eduall
-      - ./eduall/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini
-    networks:
-      - app-network
-    ports:
-      - "9001:9000"
+  # staging_php_eduall:
+  #   build:
+  #     context: ./eduall
+  #     dockerfile: Dockerfile
+  #   container_name: staging_php_eduall
+  #   volumes:
+  #     - ./eduall/src:/eduall
+  #     - ./eduall/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini
+  #   networks:
+  #     - staging-network
+  #   ports:
+  #     - "9001:9000"
 
-  php_junior:
-    build:
-      context: ./junior
-      dockerfile: Dockerfile
-    container_name: php_junior
-    volumes:
-      - ./junior/src:/junior
-      - ./junior/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini
-    networks:
-      - app-network
-    ports:
-      - "9002:9000"
+  # staging_php_junior:
+  #   build:
+  #     context: ./junior
+  #     dockerfile: Dockerfile
+  #   container_name: staging_php_junior
+  #   volumes:
+  #     - ./junior/src:/junior
+  #     - ./junior/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini
+  #   networks:
+  #     - staging-network
+  #   ports:
+  #     - "9002:9000"
 
-  php_timesheet:
-    build:
-      context: ./timesheet
-      dockerfile: Dockerfile
-    container_name: php_timesheet
-    volumes:
-      - ./timesheet/src:/timesheet
-      - ./timesheet/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini
-    networks:
-      - app-network
-    ports:
-      - "9003:9000"
+  # staging_php_timesheet:
+  #   build:
+  #     context: ./timesheet
+  #     dockerfile: Dockerfile
+  #   container_name: staging_php_timesheet
+  #   volumes:
+  #     - ./timesheet/src:/timesheet
+  #     - ./timesheet/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini
+  #   networks:
+  #     - staging-network
+  #   ports:
+  #     - "9003:9000"
 
-  php_assessment:
-    build:
-      context: ./assessment
-      dockerfile: Dockerfile
-    container_name: php_assessment
-    volumes:
-      - ./assessment/src:/assessment
-      - ./assessment/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini
-    networks:
-      - app-network
-    ports:
-      - "9004:9000"
+  # staging_php_assessment:
+  #   build:
+  #     context: ./assessment
+  #     dockerfile: Dockerfile
+  #   container_name: staging_php_assessment
+  #   volumes:
+  #     - ./assessment/src:/assessment
+  #     - ./assessment/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini
+  #   networks:
+  #     - staging-network
+  #   ports:
+  #     - "9004:9000"
   
-  php_editing:
-    build:
-      context: ./editing
-      dockerfile: Dockerfile
-    container_name: php_editing
-    volumes:
-      - ./editing/src:/editing
-      - ./editing/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini
-    networks:
-      - app-network
-    ports:
-      - "9005:9000"
+  # staging_php_editing:
+  #   build:
+  #     context: ./editing
+  #     dockerfile: Dockerfile
+  #   container_name: staging_php_editing
+  #   volumes:
+  #     - ./editing/src:/editing
+  #     - ./editing/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini
+  #   networks:
+  #     - staging-network
+  #   ports:
+  #     - "9005:9000"
 
-  php_crm:
+  staging_php_crm:
     build:
       context: ./crm
       dockerfile: Dockerfile
-    container_name: php_crm
+    container_name: staging_php_crm
     volumes:
       - ./crm/src:/crm
       - ./crm/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini
     networks:
-      - app-network
+      - staging-network
     ports:
-      - "9006:9000"
+      - "9106:9000"
 
   nginx:
     build: 
@@ -91,23 +91,23 @@ services:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
       - /etc/letsencrypt/live/edu-all.com/fullchain.pem:/etc/letsencrypt/live/edu-all.com/fullchain.pem
       - /etc/letsencrypt/live/edu-all.com/privkey.pem:/etc/letsencrypt/live/edu-all.com/privkey.pem
-      - ./eduall/src:/eduall
-      - ./registration/src:/registration
-      - ./junior/src:/junior
-      - ./timesheet/src:/timesheet
-      - ./assessment/src:/assessment
-      - ./editing/src:/editing
+      # - ./eduall/src:/eduall
+      # - ./registration/src:/registration
+      # - ./junior/src:/junior
+      # - ./timesheet/src:/timesheet
+      # - ./assessment/src:/assessment
+      # - ./editing/src:/editing
       - ./crm/src:/crm
     networks:
-      - app-network
+      - staging-network
     depends_on:
-      - php_eduall
-      - php_junior
-      - php_timesheet
-      - php_assessment
-      - php_editing
+      # - php_eduall
+      # - php_junior
+      # - php_timesheet
+      # - php_assessment
+      # - php_editing
       - php_crm
 
 networks:
-  app-network:
+  staging-network:
     driver: bridge
