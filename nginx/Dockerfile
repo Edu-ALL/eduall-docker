@@ -2,6 +2,7 @@ FROM nginx:stable
 
 RUN apt-get update && apt-get install -y \
     procps \
+    brotli \
     cron \
     bash \
     nano \
@@ -14,11 +15,6 @@ RUN apt-get update && apt-get install -y \
     php-xml \
     php-bcmath \
     php-gd\
-    build-essential \
-    zlib1g-dev \
-    libpcre3-dev \
-    libssl-dev \
-    brotli \
     && rm -rf /var/lib/apt/lists/*
 
 # CRON 
