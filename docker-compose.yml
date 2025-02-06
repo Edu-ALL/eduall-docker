@@ -106,7 +106,7 @@ services:
       # - php_timesheet
       # - php_assessment
       # - php_editing
-      - php_crm
+      - staging_php_crm
 
 networks:
   staging-network:
