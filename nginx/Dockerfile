@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y \
     php-xml \
     php-bcmath \
     php-gd\
+    php-mbstring\
     && rm -rf /var/lib/apt/lists/*
 
 # CRON 
