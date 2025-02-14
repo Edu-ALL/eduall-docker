@@ -13,6 +13,7 @@ RUN apk add --no-cache \
     nano \
     nodejs \
     npm \
+    oniguruma-dev \
     && docker-php-ext-configure gd \
     --with-freetype \
     --with-jpeg \
