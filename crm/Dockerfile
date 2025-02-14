@@ -13,7 +13,6 @@ RUN apk add --no-cache \
     nano \
     nodejs \
     npm \
-    php8-mbstring \
     && docker-php-ext-configure gd \
     --with-freetype \
     --with-jpeg \
