@@ -116,6 +116,7 @@ services:
       - ./editing/src:/editing
       - ./crm/src:/crm
       - ./staging-crm/src:/staging-crm
+      - ./mentoring/front-end/src:/mentoring/front-end
     networks:
       - app-network
     depends_on:
