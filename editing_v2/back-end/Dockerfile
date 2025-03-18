@@ -23,7 +23,7 @@ WORKDIR /editing_v2
 
 COPY ./src /editing_v2/back-end
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN composer install
+# RUN composer install
 RUN chmod -R 777 storage/
 
 EXPOSE 9000
