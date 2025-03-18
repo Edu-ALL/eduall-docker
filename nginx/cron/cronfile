@@ -4,3 +4,5 @@
 * * * * * /crm/queue.sh >> /var/log/cronjob.log 2>> /var/log/cron_error.log
 * * * * * /usr/bin/php /timesheet/artisan schedule:run >> /var/log/cronjob.log 2>> /var/log/cron_error.log
 * * * * * /staging-crm/queue.sh >> /var/log/cronjob.log 2>> /var/log/cron_error.log
+* * * * * /editing_v2/back-end/queue.sh >> /var/log/cronjob.log 2>> /var/log/cron_error.log
+* * * * * /usr/bin/php /editing_v2/back-end/artisan schedule:run >> /var/log/cronjob.log 2>> /var/log/cron_error.log
