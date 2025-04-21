@@ -105,6 +105,32 @@ services:
     ports:
       - "9008:9000"
 
+  php_mentoring:
+    build:
+      context: ./mentoring/back-end
+      dockerfile: Dockerfile
+    container_name: php_mentoring
+    volumes:
+      - ./mentoring/back-end/src:/mentoring
+      - ./mentoring/back-end/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini
+    networks:
+      - app-network
+    ports:
+      - "9009:9000"
+
+  php_authorization:
+    build:
+      context: ./authorization
+      dockerfile: Dockerfile
+    container_name: php_authorization
+    volumes:
+      - ./authorization/src:/authorization
+      - ./authorization/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini
+    networks:
+      - app-network
+    ports:
+      - "9010:9000"
+
   nginx:
     build: 
       context: ./nginx
@@ -130,8 +156,10 @@ services:
       - ./crm/src:/crm
       - ./staging-crm/src:/staging-crm
       - ./mentoring/front-end/src:/mentoring/front-end
+      - ./mentoring/back-end/src:/mentoring/back-end
       - ./editing_v2/back-end/src:/editing_v2/back-end
       - ./editing_v2/front-end/src:/editing_v2/front-end
+      - ./authorization/src:/authorization
     networks:
       - app-network
     depends_on:
@@ -143,6 +171,7 @@ services:
       - php_crm
       - staging_php_crm
       - php_editing_v2
+      - php_mentoring
 
 networks:
   app-network:
