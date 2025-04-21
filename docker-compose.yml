@@ -172,6 +172,7 @@ services:
       - staging_php_crm
       - php_editing_v2
       - php_mentoring
+      - php_authorization
 
 networks:
   app-network:
