@@ -20,9 +20,9 @@ RUN apk add --no-cache \
     --with-webp \
     && docker-php-ext-install pdo pdo_mysql bcmath gd zip mbstring
 
-WORKDIR /mentoring/back-end
+WORKDIR /mentoring
 
-COPY ./src /mentoring/back-end/
+COPY ./src /mentoring/back-end
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer install
 RUN chmod -R 777 storage/
