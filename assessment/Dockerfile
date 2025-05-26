@@ -23,7 +23,7 @@ WORKDIR /assessment
 COPY ./src /assessment/
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN chmod -R 777 storage/
-RUN composer install
+# RUN composer install
 
 EXPOSE 9000
 
