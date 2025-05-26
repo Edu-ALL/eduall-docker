@@ -140,7 +140,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./nginx/queue.sh:/
+      - ./nginx/queue.sh:/queue.sh
       - ./nginx/cron/cronfile:/etc/cron.d/cronfile
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
