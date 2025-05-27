@@ -27,7 +27,7 @@ RUN crontab /etc/cron.d/cronfile
 
 RUN service cron reload
 
-# CMD cron && nginx -g 'daemon off;'
-CMD ["cron && nginx -g 'daemon off;'" "-f"]
+CMD cron && nginx -g 'daemon off;'
+# CMD ["cron && nginx -g 'daemon off;'" "-f"]
 
 EXPOSE 80

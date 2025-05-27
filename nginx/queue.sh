@@ -25,6 +25,6 @@ run_if_not_running "EDITING" \
     "/editing_v2/back-end/storage/logs/queue_output.log"
 
 # STAGING CRM
-run_if_not_running "STAGING CRM" \
-    "/usr/bin/php /staging-crm/artisan queue:work --queue=default,inv-send-to-client,inv-email-request-sign,verifying-client,verifying-client-parent,verifying-client-teacher,imports-student,imports-parent,imports-teacher,imports-client-event,imports-school-merge,verifying_client,verifying_client_parent,verifying_client_teacher,define-category-client,get-took-ia,send-hold-program,insert-log-client,update-raw-client,update-grade-and-graduation-year-now,email-confirmation-event" \
-    "/staging-crm/storage/logs/queue_output.log"
+# run_if_not_running "STAGING CRM" \
+#     "/usr/bin/php /staging-crm/artisan queue:work --queue=default,inv-send-to-client,inv-email-request-sign,verifying-client,verifying-client-parent,verifying-client-teacher,imports-student,imports-parent,imports-teacher,imports-client-event,imports-school-merge,verifying_client,verifying_client_parent,verifying_client_teacher,define-category-client,get-took-ia,send-hold-program,insert-log-client,update-raw-client,update-grade-and-graduation-year-now,email-confirmation-event" \
+#     "/staging-crm/storage/logs/queue_output.log"
