@@ -137,6 +137,8 @@ services:
     environment:
       - discovery.type=single-node
       - xpack.security.enabled=false
+    networks:
+      - app-network
     ports:
       - "9200:9200"
 
@@ -145,6 +147,8 @@ services:
     container_name: logstash
     volumes:
       - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+    networks:
+      - app-network
     ports:
       - "5044:5044"
 
@@ -153,6 +157,8 @@ services:
     container_name: kibana
     environment:
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    networks:
+      - app-network
     ports:
       - "5601:5601"
 
