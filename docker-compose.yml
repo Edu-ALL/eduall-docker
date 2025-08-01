@@ -136,7 +136,7 @@ services:
     container_name: elasticsearch
     environment:
       - discovery.type=single-node
-      - xpack.security.enabled=true
+      - xpack.security.enabled=false
     networks:
       - app-network
     ports:
