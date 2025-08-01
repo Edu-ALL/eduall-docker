@@ -157,8 +157,8 @@ services:
     container_name: kibana
     environment:
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
-      - SERVER_BASEPATH=/kibana
-      - SERVER_PUBLICBASEURL=https://monitoring.test.com/kibana
+      - SERVER_BASEPATH=/
+      - SERVER_PUBLICBASEURL=https://monitoring.test.com/
     networks:
       - app-network
     ports:
