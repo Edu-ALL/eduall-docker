@@ -137,7 +137,6 @@ services:
     environment:
       - discovery.type=single-node
       - xpack.security.enabled=true
-      - xpack.security.enrollment.enabled=true
     networks:
       - app-network
     ports:
