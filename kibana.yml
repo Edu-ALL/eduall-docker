@@ -1,0 +1,3 @@
+server.basePath: "/kibana"
+server.publicBaseUrl: "https://monitoring.edu-all.com/kibana"
+elasticsearch.hosts: [ "http://elasticsearch:9200" ]

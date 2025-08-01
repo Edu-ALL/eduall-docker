@@ -160,6 +160,8 @@ services:
       - SERVER_PUBLICBASEURL=https://monitoring.edu-all.com
     networks:
       - app-network
+    volumes:
+      - ./kibana.yml:/usr/share/kibana/config/kibana.yml
     ports:
       - "5601:5601"
 
