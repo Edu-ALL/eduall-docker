@@ -157,8 +157,6 @@ services:
     container_name: kibana
     environment:
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
-      - SERVER_BASEPATH=/kibana
-      - SERVER_PUBLICBASEURL=https://monitoring.edu-all.com/kibana
     networks:
       - app-network
     volumes:
