@@ -3,7 +3,3 @@ server.host: "0.0.0.0"
 server.basePath: "/kibana"
 server.publicBaseUrl: "https://monitoring.edu-all.com/kibana"
 elasticsearch.hosts: [ "http://elasticsearch:9200" ]
-
-# (Opsional) Nonaktifkan telemetry dan welcome screen
-telemetry.enabled: false
-newsfeed.enabled: false
