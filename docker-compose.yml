@@ -157,8 +157,6 @@ services:
     container_name: kibana
     environment:
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
-      - ELASTICSEARCH_USERNAME=admin_kibana
-      - ELASTICSEARCH_PASSWORD=EduALL04
     networks:
       - app-network
     ports:
