@@ -156,7 +156,7 @@ services:
     image: docker.elastic.co/kibana/kibana:8.12.2
     container_name: kibana
     environment:
-      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - ELASTICSEARCH_HOSTS=http://edu-all.com:9200
     networks:
       - app-network
     ports:
