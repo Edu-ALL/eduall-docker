@@ -150,7 +150,7 @@ services:
     environment:
       - xpack.monitoring.enabled=false
       - xpack.security.enabled=false
-      - ELASTICSEARCH_USERNAME=admin_eduall
+      - ELASTICSEARCH_USERNAME=elastic
       - ELASTICSEARCH_PASSWORD=EduALL04
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
     volumes:
@@ -165,7 +165,7 @@ services:
     container_name: kibana
     environment:
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
-      - ELASTICSEARCH_USERNAME=admin_eduall
+      - ELASTICSEARCH_USERNAME=elastic
       - ELASTICSEARCH_PASSWORD=EduALL04
     networks:
       - app-network
