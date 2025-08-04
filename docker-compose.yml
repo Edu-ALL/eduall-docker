@@ -136,9 +136,7 @@ services:
     container_name: elasticsearch
     environment:
       - discovery.type=single-node
-      - xpack.security.enabled=true
-      - ELASTIC_PASSWORD=EduALL04
-      - xpack.security.transport.ssl.enabled=false
+      - xpack.security.enabled=false
     networks:
       - app-network
     ports:
@@ -150,8 +148,6 @@ services:
     environment:
       - xpack.monitoring.enabled=false
       - xpack.security.enabled=false
-      - ELASTICSEARCH_USERNAME=admin
-      - ELASTICSEARCH_PASSWORD=EduALL04
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
     volumes:
       - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
@@ -165,7 +161,6 @@ services:
     container_name: kibana
     environment:
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
-      - ELASTICSEARCH_SERVICEACCOUNT_TOKEN=AAEAAWVsYXN0aWMva2liYW5hL2tpYmFuYS10b2tlbjo0LXRZam1PRVRqaWk2cHJNV3pxcFFn
     networks:
       - app-network
     ports:
