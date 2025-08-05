@@ -137,6 +137,7 @@ services:
     environment:
       - discovery.type=single-node
       - xpack.security.enabled=true
+      - ELASTIC_PASSWORD=EduALL04
     networks:
       - app-network
     ports:
