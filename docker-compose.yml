@@ -147,7 +147,7 @@ services:
     image: docker.elastic.co/logstash/logstash:8.12.2
     container_name: logstash
     environment:
-      - xpack.monitoring.enabled=false
+      - xpack.monitoring.enabled=true
       - xpack.security.enabled=true
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
     volumes:
