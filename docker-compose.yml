@@ -146,8 +146,6 @@ services:
   logstash:
     image: docker.elastic.co/logstash/logstash:8.12.2
     container_name: logstash
-    environment:
-      - xpack.monitoring.enabled=true
     volumes:
       - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
     networks:
