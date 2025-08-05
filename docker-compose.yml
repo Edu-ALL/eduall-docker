@@ -137,7 +137,6 @@ services:
     environment:
       - discovery.type=single-node
       - xpack.security.enabled=true
-      - ELASTIC_PASSWORD=EduALL04
     networks:
       - app-network
     ports:
@@ -146,6 +145,10 @@ services:
   logstash:
     image: docker.elastic.co/logstash/logstash:8.12.2
     container_name: logstash
+    environment:
+      - xpack.monitoring.enabled=false
+      - xpack.security.enabled=false
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
     volumes:
       - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
     networks:
@@ -160,8 +163,7 @@ services:
     container_name: kibana
     environment:
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
-      - ELASTICSEARCH_USERNAME=elastic
-      - ELASTICSEARCH_PASSWORD=EduALL04
+      - ELASTICSEARCH_SERVICEACCOUNTTOKEN=${KIBANA_SERVICE_TOKEN}
     networks:
       - app-network
     depends_on:
