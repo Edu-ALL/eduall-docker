@@ -147,7 +147,7 @@ services:
     container_name: logstash
     environment:
       - xpack.monitoring.enabled=false
-      - xpack.security.enabled=false
+      - xpack.security.enabled=true
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
     volumes:
       - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
