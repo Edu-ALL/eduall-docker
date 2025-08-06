@@ -185,8 +185,6 @@ services:
       - "443:443"
     volumes:
       - ./nginx/logs:/var/log/nginx
-      - ./nginx/logs:/var/log/cronjob.log
-      - ./nginx/logs:/var/log/cron_error.log
       - ./nginx/queue.sh:/queue.sh
       - ./nginx/cron/cronfile:/etc/cron.d/cronfile
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
