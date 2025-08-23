@@ -187,7 +187,7 @@ services:
       - WEBHOOK_URL=https://workflow.edu-all.com/
       - N8N_EDITOR_BASE_URL=https://workflow.edu-all.com
       - GENERIC_TIMEZONE=Asia/Jakarta
-      - N8N_CORS_ALLOW_ORIGIN=*
+      - N8N_CORS_ALLOW_ORIGIN=http://localhost:3000
       - N8N_CORS_ALLOW_METHODS=GET,POST,PATCH,DELETE,PUT,OPTIONS
       - N8N_CORS_ALLOW_HEADERS=Authorization,Content-Type
     ports:
