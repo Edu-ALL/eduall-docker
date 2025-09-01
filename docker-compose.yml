@@ -228,6 +228,7 @@ services:
       - ./editing_v2/back-end/src:/editing_v2/back-end
       - ./editing_v2/front-end/src:/editing_v2/front-end
       - ./authorization/src:/authorization
+      - ./assistant/src:/assistant
     networks:
       - app-network
     depends_on:
