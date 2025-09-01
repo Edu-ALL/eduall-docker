@@ -86,6 +86,7 @@ services:
     container_name: staging_php_crm
     volumes:
       - ./staging-crm/src:/staging-crm
+      - ./staging-crm/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini
     networks:
       - app-network
     ports:
