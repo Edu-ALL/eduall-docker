@@ -157,7 +157,6 @@ services:
     volumes:
       - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
       - ./nginx/logs:/var/log/nginx
-      - ./timesheet/src/storage/logs:/var/log/timesheet
     networks:
       - app-network
     depends_on:
