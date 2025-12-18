@@ -182,6 +182,7 @@ services:
     container_name: n8n
     environment:
       - N8N_BINARY_DATA_MODE=filesystem
+      - N8N_TRUST_PROXY=true
       - N8N_BASIC_AUTH_ACTIVE=true
       - N8N_BASIC_AUTH_USER=admin
       - N8N_BASIC_AUTH_PASSWORD=EduALL04
