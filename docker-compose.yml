@@ -131,6 +131,19 @@ services:
     ports:
       - "9010:9000"
 
+  php_asset:
+    build:
+      context: ./asset-management
+      dockerfile: Dockerfile
+    container_name: php_asset
+    volumes:
+      - ./asset-management/src:/asset-management
+      - ./asset-management/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini
+    networks:
+      - app-network
+    ports:
+      - "9011:9000"
+
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.12.2
     container_name: elasticsearch
@@ -233,6 +246,7 @@ services:
       - ./editing_v2/front-end/src:/editing_v2/front-end
       - ./authorization/src:/authorization
       - ./assistant/src:/assistant
+      - ./asset-management/src:/asset-management
     networks:
       - app-network
     depends_on:
@@ -246,6 +260,7 @@ services:
       - php_editing_v2
       - php_mentoring
       - php_authorization
+      - php_asset
       - kibana
       - n8n
 

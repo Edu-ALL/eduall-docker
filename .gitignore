@@ -5,6 +5,7 @@
 ./junior/src
 ./editing/src
 ./crm/src
+./asset-management/src
 eduall/src
 registration/src
 timesheet/src
@@ -12,3 +13,4 @@ assessment/src
 junior/src
 editing/src
 crm/src
+asset-management/src
