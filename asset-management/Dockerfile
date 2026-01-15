@@ -18,7 +18,7 @@ RUN apk add --no-cache \
     --with-freetype \
     --with-jpeg \
     --with-webp \
-    && docker-php-ext-install pdo pdo_mysql bcmath gd zip mbstring
+    && docker-php-ext-install pdo pdo_mysql bcmath gd zip mbstring exif
 
 WORKDIR /asset-management
 
