@@ -148,7 +148,7 @@ services:
     build:
       context: ./helpdesk
       dockerfile: Dockerfile
-    container_name: php_hel
+    container_name: php_helpdesk
     volumes:
       - ./helpdesk/src:/helpdesk
       - ./helpdesk/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini
@@ -165,9 +165,6 @@ services:
     volumes:
       - redis-data:/data
     restart: unless-stopped
-
-volumes:
-  redis-data:
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.12.2
