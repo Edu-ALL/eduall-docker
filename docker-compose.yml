@@ -272,6 +272,7 @@ volumes:
       - ./authorization/src:/authorization
       - ./assistant/src:/assistant
       - ./asset-management/src:/asset-management
+      - ./helpdesk/src:/helpdesk
     networks:
       - app-network
     depends_on:
