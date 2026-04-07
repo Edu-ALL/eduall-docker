@@ -14,6 +14,19 @@ services:
     ports:
       - "9001:9000"
 
+  php_junior:
+    build:
+      context: ./junior
+      dockerfile: Dockerfile
+    container_name: php_junior
+    volumes:
+      - ./junior/src:/junior
+      - ./junior/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini
+    networks:
+      - app-network
+    ports:
+      - "9002:9000"
+
   php_timesheet:
     build:
       context: ./timesheet
@@ -39,6 +52,19 @@ services:
       - app-network
     ports:
       - "9004:9000"
+  
+  php_editing:
+    build:
+      context: ./editing
+      dockerfile: Dockerfile
+    container_name: php_editing
+    volumes:
+      - ./editing/src:/editing
+      - ./editing/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini
+    networks:
+      - app-network
+    ports:
+      - "9005:9000"
 
   php_crm:
     build:
@@ -140,6 +166,52 @@ services:
       - ./redis-data:/data
     restart: unless-stopped
 
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.12.2
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=true
+      - ELASTIC_PASSWORD=EduALL04
+    networks:
+      - app-network
+    ports:
+      - "9200:9200"
+    volumes:
+      - "./elk-data:/usr/share/elasticsearch/data"
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:8.12.2
+    container_name: logstash
+    environment:
+      - xpack.monitoring.enabled=false
+      - xpack.security.enabled=false
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - ELASTICSEARCH_USERNAME=logstash_writer
+      - ELASTICSEARCH_PASSWORD=EduALL04
+    volumes:
+      - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+      - ./nginx/logs:/var/log/nginx
+    networks:
+      - app-network
+    depends_on:
+      - elasticsearch
+    ports:
+      - "5044:5044"
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.12.2
+    container_name: kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - ELASTICSEARCH_SERVICEACCOUNTTOKEN=${KIBANA_SERVICE_TOKEN}
+    networks:
+      - app-network
+    depends_on:
+      - elasticsearch
+    ports:
+      - "5601:5601"
+
   n8n:
     image: n8nio/n8n:latest
     container_name: n8n
@@ -164,19 +236,6 @@ services:
     networks:
       - app-network
 
-  grafana:
-    image: grafana/grafana-oss:latest
-    container_name: grafana
-    ports:
-      - "3000:3000"
-    volumes:
-      - grafana-storage:/var/lib/grafana
-    environment:
-      - GF_SECURITY_ADMIN_PASSWORD=EduALL04
-    restart: unless-stopped
-    networks:
-      - app-network
-
   nginx:
     build: 
       context: ./nginx
@@ -197,8 +256,10 @@ services:
       - /etc/letsencrypt/live/edu-all.com-0002/privkey.pem:/etc/letsencrypt/live/edu-all.com-0002/privkey1.pem
       - ./eduall/src:/eduall
       - ./registration/src:/registration
+      - ./junior/src:/junior
       - ./timesheet/src:/timesheet
       - ./assessment/src:/assessment
+      - ./editing/src:/editing
       - ./crm/src:/crm
       - ./staging-crm/src:/staging-crm
       - ./mentoring/front-end/src:/mentoring/front-end
