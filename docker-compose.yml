@@ -169,7 +169,9 @@ services:
     container_name: loki
     volumes:
       - ./loki-config.yaml:/etc/loki/config.yaml
-      - ./loki_data:/loki
+      - ./loki_data/chunks:/loki/chunks
+      - ./loki_data/index:/loki/index
+      - ./loki_data/compactor:/var/loki
     command: -config.file=/etc/loki/config.yaml
     restart: unless-stopped
     networks:
