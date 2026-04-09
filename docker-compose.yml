@@ -164,6 +164,35 @@ services:
     networks:
       - app-network
 
+  loki:
+    image: grafana/loki:latest
+    container_name: loki
+    volumes:
+      - ./loki-config.yaml:/etc/loki/config.yaml
+      - ./loki-data:/loki
+    command: -config.file=/etc/loki/config.yaml
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  promtail:
+    image: grafana/promtail:latest
+    container_name: promtail
+    volumes:
+      - ./eduall/src/storage/logs:/eduall/logs
+      - ./timesheet/src/storage/logs:/timesheet/logs
+      - ./assessment/src/storage/logs:/assessment/logs
+      - ./crm/src/storage/logs:/crm/logs
+      - ./staging-crm/src/storage/logs:/staging-crm/logs
+      - ./timesheet/src/storage/logs:/timesheet/logs
+      - ./editing_v2/back-end/src/storage/logs:/editing_v2/back-end/logs
+      - ./mentoring/back-end/src/storage/logs:/mentoring/back-end/logs
+      - ./promtail-config.yaml:/etc/promtail/config.yaml
+    command: -config.file=/etc/promtail/config.yaml
+    restart: unless-stopped
+    networks:
+      - app-network
+
   grafana:
     image: grafana/grafana-oss:latest
     container_name: grafana

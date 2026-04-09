@@ -1,0 +1,66 @@
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+
+positions:
+  filename: /tmp/positions.yaml
+
+clients:
+  - url: http://loki:3100/loki/api/v1/push
+
+scrape_configs:
+  - job_name: eduall-logs
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: eduall
+          __path__: /eduall/logs/*.log
+
+  - job_name: timesheet-logs
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: timesheet
+          __path__: /timesheet/logs/*.log
+
+  - job_name: assessment-logs
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: assessment
+          __path__: /assessment/logs/*.log
+
+  - job_name: crm-logs
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: crm
+          __path__: /crm/logs/*.log
+
+  - job_name: staging-crm-logs
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: staging-crm
+          __path__: /staging-crm/logs/*.log
+
+  - job_name: editing-backend-logs
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: editing-backend
+          __path__: /editing_v2-backend/logs/*.log
+
+  - job_name: mentoring-backend-logs
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: mentoring-backend
+          __path__: /mentoring-backend/logs/*.log
