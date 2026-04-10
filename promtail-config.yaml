@@ -20,7 +20,7 @@ scrape_configs:
           __path__: /eduall/logs/*.log
     pipeline_stages:
       - drop:
-          expression: '.{262144,}'
+          expression: 'stacktrace|var_dump|dd\('
       - multiline:
           firstline: '^\[\d{4}-\d{2}-\d{2}'
           max_wait_time: 3s
@@ -50,7 +50,7 @@ scrape_configs:
           __path__: /timesheet/logs/*.log
     pipeline_stages:
       - drop:
-          expression: '.{262144,}'
+          expression: 'stacktrace|var_dump|dd\('
 
   - job_name: assessment-logs
     static_configs:
@@ -61,7 +61,7 @@ scrape_configs:
           __path__: /assessment/logs/*.log
     pipeline_stages:
       - drop:
-          expression: '.{262144,}'
+          expression: 'stacktrace|var_dump|dd\('
 
   - job_name: crm-logs
     static_configs:
@@ -72,7 +72,7 @@ scrape_configs:
           __path__: /crm/logs/*.log
     pipeline_stages:
       - drop:
-          expression: '.{262144,}'
+          expression: 'stacktrace|var_dump|dd\('
 
   - job_name: staging-crm-logs
     static_configs:
@@ -83,7 +83,7 @@ scrape_configs:
           __path__: /staging-crm/logs/*.log
     pipeline_stages:
       - drop:
-          expression: '.{262144,}'
+          expression: 'stacktrace|var_dump|dd\('
 
   - job_name: editing-backend-logs
     static_configs:
@@ -94,7 +94,7 @@ scrape_configs:
           __path__: /editing_v2-backend/logs/*.log
     pipeline_stages:
       - drop:
-          expression: '.{262144,}'
+          expression: 'stacktrace|var_dump|dd\('
 
   - job_name: mentoring-backend-logs
     static_configs:
@@ -105,4 +105,4 @@ scrape_configs:
           __path__: /mentoring-backend/logs/*.log
     pipeline_stages:
       - drop:
-          expression: '.{262144,}'
+          expression: 'stacktrace|var_dump|dd\('
