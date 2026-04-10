@@ -16,6 +16,24 @@ scrape_configs:
         labels:
           job: eduall
           __path__: /eduall/logs/*.log
+    pipeline_stages:
+      - multiline:
+          firstline: '^\[\d{4}-\d{2}-\d{2}'
+          max_wait_time: 3s
+      - json:
+          source: context
+          expressions:
+            view: view
+            exception: exception
+            userId: userId
+          drop_malformed: true
+      - timestamp:
+          source: time
+          format: '2006-01-02 15:04:05'
+      - labels:
+          level:
+          channel:
+          service:
 
   - job_name: timesheet-logs
     static_configs:
@@ -40,29 +58,6 @@ scrape_configs:
         labels:
           job: crm
           __path__: /crm/logs/*.log
-
-    pipeline_stages:
-      - multiline:
-          firstline: '^\[\d{4}-\d{2}-\d{2}'
-          max_wait_time: 3s
-
-      - regex:
-          expression: '\[(?P<time>.*?)\] (?P<channel>[\w-]+)\.(?P<level>\w+): (?P<message>.*?)(?: (?P<context>\{.*\}))?$'
-
-      - json:
-          source: context
-          expressions:
-            dummy: context
-          drop_malformed: true
-
-      - timestamp:
-          source: time
-          format: '2006-01-02 15:04:05'
-
-      - labels:
-          level:
-          channel:
-          service:
 
   - job_name: staging-crm-logs
     static_configs:
