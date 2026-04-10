@@ -41,6 +41,23 @@ scrape_configs:
           job: crm
           __path__: /crm/logs/*.log
 
+    pipeline_stages:
+      - regex:
+          expression: '\[(?P<time>.*?)\] (?P<channel>[\w-]+)\.(?P<level>\w+): (?P<message>.*?)(?: (?P<context>\{.*\}))?$'
+
+      - json:
+          source: context
+          drop_malformed: true
+
+      - timestamp:
+          source: time
+          format: '2006-01-02 15:04:05'
+
+      - labels:
+          level:
+          channel:
+          service:
+
   - job_name: staging-crm-logs
     static_configs:
       - targets:
