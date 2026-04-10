@@ -51,6 +51,8 @@ scrape_configs:
 
       - json:
           source: context
+          expressions:
+            dummy: context
           drop_malformed: true
 
       - timestamp:
