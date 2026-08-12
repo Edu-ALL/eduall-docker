@@ -18,7 +18,7 @@ services:
     build:
       context: ./eduall-staging
       dockerfile: Dockerfile
-    container_name: php_eduall
+    container_name: php_staging_eduall
     volumes:
       - ./eduall-staging/src:/eduall-staging
       - ./eduall-staging/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini
