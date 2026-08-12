@@ -14,6 +14,19 @@ services:
     ports:
       - "9001:9000"
 
+  php_staging_eduall:
+    build:
+      context: ./eduall-staging
+      dockerfile: Dockerfile
+    container_name: php_eduall
+    volumes:
+      - ./eduall-staging/src:/eduall-staging
+      - ./eduall-staging/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini
+    networks:
+      - app-network
+    ports:
+      - "9100:9000"
+
   php_timesheet:
     build:
       context: ./timesheet
@@ -183,6 +196,7 @@ services:
       - /etc/letsencrypt/live/edu-all.com-0002/fullchain.pem:/etc/letsencrypt/live/edu-all.com-0002/fullchain1.pem
       - /etc/letsencrypt/live/edu-all.com-0002/privkey.pem:/etc/letsencrypt/live/edu-all.com-0002/privkey1.pem
       - ./eduall/src:/eduall
+      - ./eduall-staging/src:/eduall-staging
       - ./registration/src:/registration
       - ./timesheet/src:/timesheet
       - ./assessment/src:/assessment
@@ -200,6 +214,7 @@ services:
       - app-network
     depends_on:
       - php_eduall
+      - php_staging_eduall
       - php_timesheet
       - php_assessment
       - php_crm
