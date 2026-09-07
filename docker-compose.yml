@@ -40,6 +40,19 @@ services:
     ports:
       - "9003:9000"
 
+  php_timesheet_staging:
+    build:
+      context: ./timesheet-staging
+      dockerfile: Dockerfile
+    container_name: php_timesheet_staging
+    volumes:
+      - ./timesheet-staging/src:/timesheet-staging
+      - ./timesheet-staging/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini
+    networks:
+      - app-network
+    ports:
+      - "9101:9000"
+
   php_assessment:
     build:
       context: ./assessment
@@ -52,6 +65,19 @@ services:
       - app-network
     ports:
       - "9004:9000"
+
+  php_assessment_staging:
+    build:
+      context: ./assessment-staging
+      dockerfile: Dockerfile
+    container_name: php_assessment_staging
+    volumes:
+      - ./assessment-staging/src:/assessment-staging
+      - ./assessment-staging/docker-fpm.ini:/usr/local/etc/php/conf.d/docker-fpm.ini
+    networks:
+      - app-network
+    ports:
+      - "9102:9000"
 
   php_crm:
     build:
@@ -199,7 +225,9 @@ services:
       - ./eduall-staging/src:/eduall-staging
       - ./registration/src:/registration
       - ./timesheet/src:/timesheet
+      - ./timesheet-staging/src:/timesheet-staging
       - ./assessment/src:/assessment
+      - ./assessment-staging/src:/assessment-staging
       - ./crm/src:/crm
       - ./staging-crm/src:/staging-crm
       - ./mentoring/front-end/src:/mentoring/front-end
